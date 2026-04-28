@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Đăng nhập - LeMinhStudio</title>
+    
+    <style>
+        /* Tái sử dụng CSS hiện đại từ trang chủ */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            /* Căn giữa toàn màn hình cho trang đăng nhập */
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-modern {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 420px; /* Ép form nhỏ gọn ở giữa màn hình */
+        }
+
+        .card-header-modern {
+            background-color: #4361ee; 
+            color: #ffffff;
+            font-weight: 600;
+            border-top-left-radius: 12px !important;
+            border-top-right-radius: 12px !important;
+            border-bottom: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .btn-custom {
+            border-radius: 8px;
+            font-weight: 600;
+            padding: 10px;
+        }
+        
+        .form-control-custom {
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 12px;
+        }
+        .form-control-custom:focus {
+            background-color: #fff;
+            border-color: #4361ee;
+            box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+        }
+
+        /* Logo thương hiệu nổi bật trên form */
+        .brand-logo {
+            font-size: 2rem;
+            color: #4361ee;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex flex-column align-items-center">
+        
+        <div class="brand-logo fw-bold">
+            <i class="bi bi-layers-fill me-1"></i> LeMinhStudio
+        </div>
+
+        <div class="card card-modern">
+            <div class="card-header card-header-modern">
+                <h5 class="mb-0">ĐĂNG NHẬP HỆ THỐNG</h5>
+            </div>
+            <div class="card-body p-4">
+                <form action="/dangnhap" method="POST" class="needs-validation" novalidate>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-medium text-muted small">Tên đăng nhập</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0"><i class="bi bi-person text-muted"></i></span>
+                            <input type="text" class="form-control form-control-custom border-start-0 ps-0" name="TenDangNhap" placeholder="Nhập tài khoản của bạn..." required autofocus>
+                            <div class="invalid-feedback">Vui lòng nhập tên đăng nhập.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <label class="form-label fw-medium text-muted small">Mật khẩu</label>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0"><i class="bi bi-lock text-muted"></i></span>
+                            <input type="password" class="form-control form-control-custom border-start-0 ps-0" name="MatKhau" placeholder="Nhập mật khẩu..." required>
+                            <div class="invalid-feedback">Vui lòng nhập mật khẩu.</div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-custom w-100 mb-3 shadow-sm">
+                        Đăng nhập
+                    </button>
+                </form>
+                
+                <div class="text-center mt-2">
+                    <span class="text-muted small">Chưa có tài khoản?</span> 
+                    <a href="/dangky" class="text-decoration-none fw-semibold" style="color: #4361ee;">Đăng ký ngay</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function() {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+</body>
+</html>

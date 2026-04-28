@@ -1,0 +1,20 @@
+{
+  "name": "doan",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "tran anh tuan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "mongoose": "^9.4.1",
+    "nodemon": "^3.1.14"
+  }
+}
