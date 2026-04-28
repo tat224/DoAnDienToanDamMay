@@ -242,6 +242,9 @@ app.get('/taikhoan/xoa/:id', async (req, res) => {
 // ==========================================
 // KHỞI ĐỘNG SERVER
 // ==========================================
-app.listen(3000, () => {
-    console.log('Server is running at http://127.0.0.1:3000');
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server đang chạy trên cổng ${PORT}`);
+
 });
