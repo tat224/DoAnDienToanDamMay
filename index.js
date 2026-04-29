@@ -33,12 +33,9 @@ app.use((req, res, next) => {
     next();
 });
 
-// ==========================================
-// TRANG CHỦ & XÁC THỰC (Đăng nhập, Đăng ký)
-// ==========================================
+// THÔNG BÁO
 
 app.get('/', async (req, res) => {
-    // Sắp xếp -1 để thông báo mới nhất hiện lên trên cùng
     const danhSachTB = await ThongBao.find().sort({ NgayTao: -1 });
     res.render('index', { title: 'THÔNG BÁOOO!!', danhSachTB });
 });
@@ -52,21 +49,22 @@ app.post('/thongbao/them', async (req, res) => {
             TieuDe: req.body.TieuDe,
             NoiDung: req.body.NoiDung
         });
-        res.redirect('/'); // Lưu xong thì quay về trang chủ để xem
+        res.redirect('/');
     } catch (error) {
         res.send('Lỗi lưu thông báo!');
     }
 });
 // XỬ LÝ XÓA THÔNG BÁO
 app.get('/thongbao/xoa/:id', async (req, res) => {
-    if (!req.session.user) return res.redirect('/dangnhap'); // Chặn người lạ
+    if (!req.session.user) return res.redirect('/dangnhap'); 
     try {
         await ThongBao.findByIdAndDelete(req.params.id);
-        res.redirect('/'); // Xóa xong load lại trang chủ
+        res.redirect('/'); 
     } catch (error) {
         res.send('Lỗi không thể xóa thông báo!');
     }
 });
+// TRANG CHỦ & XÁC THỰC (Đăng nhập, Đăng ký)
 app.get('/dangky', (req, res) => {
     res.render('dangky', { title: 'Đăng ký thành viên' });
 });

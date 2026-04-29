@@ -80,16 +80,18 @@
                                 <a class="nav-link px-3" href="/"><i class="bi bi-grid-1x2 text-muted me-1"></i> Tổng quan</a>
                             </li>
                             
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-gear text-muted me-1"></i> Quản lý
-                                </a>
-                                <ul class="dropdown-menu border-0 shadow-sm rounded-3 mt-2">
-                                    <li><a class="dropdown-item py-2" href="/phongban"><i class="bi bi-diagram-3 text-muted me-2"></i> Phòng ban</a></li>
-                                    <li><a class="dropdown-item py-2" href="/taikhoan"><i class="bi bi-people text-muted me-2"></i> Hồ sơ nhân viên</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                </ul>
-                            </li>
+								<% if (user.QuyenHan === 'admin') { %>
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										<i class="bi bi-gear text-muted me-1"></i> Quản lý
+									</a>
+									<ul class="dropdown-menu border-0 shadow-sm rounded-3 mt-2">
+										<li><a class="dropdown-item py-2" href="/phongban"><i class="bi bi-diagram-3 text-muted me-2"></i> Phòng ban</a></li>
+										<li><a class="dropdown-item py-2" href="/taikhoan"><i class="bi bi-people text-muted me-2"></i> Hồ sơ nhân viên</a></li>
+										<li><hr class="dropdown-divider"></li>
+									</ul>
+								</li>
+								<% } %>
 
                             <li class="nav-item">
                                 <span class="nav-link px-3 text-primary fw-bold">
@@ -118,9 +120,11 @@
                 <div>
                     <i class="bi bi-megaphone me-1"></i> <%= title %>
                 </div>
+				<% if (user.QuyenHan === 'admin') { %>
                 <a href="/thongbao/them" class="btn btn-light btn-sm fw-bold text-primary" style="border-radius: 6px;">
                     <i class="bi bi-plus-lg me-1"></i> Thêm thông báo
                 </a>
+				<% } %>
             </div>
             
             <div class="card-body p-4">
@@ -132,9 +136,11 @@
                                 
                                 <div class="d-flex align-items-center">
                                     <small class="text-muted me-3"><%= tb.NgayTao.toLocaleDateString('vi-VN') %></small>
+									<% if (user.QuyenHan === 'admin') { %>
                                     <a href="/thongbao/xoa/<%= tb._id %>" onclick="return confirm('Bro chắc chắn muốn xóa thông báo này chứ?');" class="btn btn-sm btn-outline-danger border-0 p-1" title="Xóa thông báo">
                                         <i class="bi bi-trash fs-6"></i>
                                     </a>
+									<% } %>
                                 </div>
                             </div>
                             <p class="mb-0 small text-dark mt-2"><%= tb.NoiDung %></p>
